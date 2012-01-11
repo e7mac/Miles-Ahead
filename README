@@ -1,5 +1,0 @@
-Dependencies
-You need to have libfluidsynth to un this project.
-
-Installing
-Run make in the root directory. Then type ./milesAhead .
