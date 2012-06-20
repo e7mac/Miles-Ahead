@@ -138,6 +138,8 @@ protected:
   //! Function for error reporting and handling.
   static void handleError( const char *message, StkError::TYPE type );
 
+  static void handleError(StkError::TYPE type);
+
 };
 
 // Here are a few other useful typedefs.
