@@ -1,11 +1,14 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <GLUT/glut.h>
+#include <GL/glut.h>
+#include <GL/glu.h>
 #include <math.h>
 #include <sstream>
 #include <iostream>
 #include <vector>
-
+#include <fluidsynth.h>
+#include "Thread.h"
+#include "MidiEventQ.h"
 
 #define MY_SRATE 48000
 #define SAMPLE float  // important: FluidSynth returns floats, so let's define SAMPLE as float to make it simple
