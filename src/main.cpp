@@ -284,10 +284,13 @@ int main (int argc, char ** argv)
     
     // set up fluid synth stuff
     // TODO: error checking!!!!
-    g_settings = new_fluid_settings(); 
+    g_settings = new_fluid_settings();
+#ifdef __LINUX_PULSE__
+    fluid_settings_setstr(g_settings, "audio.driver", "pulseaudio");
+#endif
     g_synth = new_fluid_synth( g_settings );
     g_metronome = new_fluid_synth( g_settings );  
-    
+  
     
     //fluid_player_t* player;
     //player = new_fluid_player(g_synth);
