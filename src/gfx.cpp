@@ -81,7 +81,7 @@ bool g_clear = false;
 void draw_string( GLfloat x, GLfloat y, GLfloat z, string str, GLfloat scale,float thickness);
 void drawFret(int fret);
 void drawAllFrets();
-void drawFretline(GLfloat y,float x,float y);
+void drawFretline(GLfloat y1,float x,float y);
 void drawFretboard();
 void playNote(int,float);
 void drawString(float);
