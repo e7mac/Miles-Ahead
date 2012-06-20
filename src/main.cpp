@@ -90,7 +90,7 @@ void corrected_fluid_synth_noteon(fluid_synth_t* g_synth,int chan,int pitch,int 
 }
 
 
-#include "gfx.cpp"
+#include "gfx.h"
 
 //-----------------------------------------------------------------------------
 // name: midi_callback()
