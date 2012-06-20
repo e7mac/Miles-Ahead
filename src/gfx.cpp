@@ -1,11 +1,14 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <GLUT/glut.h>
+#include <GL/glut.h>
+#include <GL/glu.h>
 #include <math.h>
 #include <sstream>
 #include <iostream>
 #include <vector>
-
+#include <fluidsynth.h>
+#include "Thread.h"
+#include "MidiEventQ.h"
 
 #define MY_SRATE 48000
 #define SAMPLE float  // important: FluidSynth returns floats, so let's define SAMPLE as float to make it simple
@@ -19,7 +22,49 @@ GLfloat g_inc_val_mouse = 0.5f;
 
 using namespace std;
 
+extern MidiEventQ g_playHuman;
+extern MidiEventQ g_playComputer;
+extern vector<MidiEvent> g_current;
 
+extern float g_prob_melody;
+extern float g_prob_rhythm;
+
+extern Mutex g_mutex;
+
+// globals for FluidSynth
+extern fluid_settings_t * g_settings;
+extern fluid_synth_t * g_synth;
+extern fluid_synth_t * g_metronome;
+extern int g_t;
+extern int g_tempo;
+extern int g_beat;
+extern int g_bar;
+extern int g_tradebars;
+extern int g_trade;
+extern int g_sixteenth;
+extern int g_eighth;
+extern int g_quarter;
+extern int g_half;
+extern bool turn_cpu;
+extern int g_drumnote;
+extern int g_metronome_on;
+extern int g_beat_played;
+
+
+extern float g_fret_spill;
+extern float g_fretboard_h;
+extern float g_fretboard_w;
+extern float g_fret_h;
+extern float g_fret_w;
+extern float g_string_h;
+extern float g_string_w;
+
+extern float g_continuous_x;
+extern float g_quantization_x;
+extern float g_timeline_x;
+
+extern vector<int> g_played;
+extern vector<int> g_stopped;
 
 float * g_fftBuff;
 float * g_audioBuff;
@@ -36,7 +81,7 @@ bool g_clear = false;
 void draw_string( GLfloat x, GLfloat y, GLfloat z, string str, GLfloat scale,float thickness);
 void drawFret(int fret);
 void drawAllFrets();
-void drawFretline(GLfloat y,float x,float y);
+void drawFretline(GLfloat y1,float x,float y);
 void drawFretboard();
 void playNote(int,float);
 void drawString(float);

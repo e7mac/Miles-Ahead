@@ -127,6 +127,11 @@ void Stk :: sleep(unsigned long milliseconds)
 #endif
 }
 
+void Stk :: handleError(StkError::TYPE type )
+{
+  Stk::handleError("error", type);
+}
+
 void Stk :: handleError( const char *message, StkError::TYPE type )
 {
   if (type == StkError::WARNING)
