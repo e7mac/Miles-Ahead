@@ -19,6 +19,9 @@
 #include <cstring>
 #include <iostream>
 
+using std::cout;
+#define oStream_ std::cout
+
 namespace stk {
 
 MidiFileIn :: MidiFileIn( std::string fileName )
