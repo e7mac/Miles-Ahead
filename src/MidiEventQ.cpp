@@ -5,6 +5,7 @@
 
 #include "MidiEventQ.h"
 #include <iostream>
+#include <cstdlib>
 
 void MidiEventQ::add(MidiEvent mid)
 {
